@@ -2,7 +2,10 @@
   <div>
     Title
     <input v-model="title" />
+    <input v-model="url" />
+    <input v-model="description" />
     <button @click="handleSubmit">SUBMIT</button>
+    <!-- smth with $emit -->
   </div>
 </template>
 

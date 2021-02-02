@@ -1,11 +1,21 @@
 <template>
   <div>
-    Title
-    <input v-model="title" />
-    <input v-model="url" />
-    <input v-model="description" />
-    <button @click="handleSubmit">SUBMIT</button>
-    <!-- smth with $emit -->
+    <div class="mb-4">
+      <label for="title">Title</label>
+      <input v-model="title" id="title" class="form-control" />
+    </div>
+
+    <div class="mb-4">
+      <label for="image">Image</label>
+      <input v-model="image" type="url" id="image" class="form-control" />
+    </div>
+
+    <div class="mb-4">
+      <label for="description">Description</label>
+      <textarea v-model="description" id="description" class="form-control">
+      </textarea>
+    </div>
+    <button @click="handleSubmit" class="btn btn-primary">SUBMIT</button>
   </div>
 </template>
 

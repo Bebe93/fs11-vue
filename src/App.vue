@@ -1,15 +1,22 @@
 <template>
-  <div>
+  <div class="container">
     <h1>Hello World</h1>
-    <button @click="isAdmin = true" :class="{ bgDanger: isAdmin }">
+    <button
+      @click="isAdmin = true"
+      class="btn"
+      :class="{ 'bg-danger': isAdmin }"
+    >
       ADMIN
     </button>
-    <button @click="isAdmin = false" :class="{ bgDanger: !isAdmin }">
+    <button
+      @click="isAdmin = false"
+      class="btn"
+      :class="{ 'bg-danger': !isAdmin }"
+    >
       USER
     </button>
     <admin-view v-if="isAdmin" @createProject="addProject" />
-    <user-view v-else />
-    <!-- // how do I say here to transmit CreateProject to user-view? -->
+    <user-view v-else :projects="allProjects" />
   </div>
 </template>
 
@@ -33,8 +40,7 @@ export default {
     addProject(project) {
       this.allProjects.push(project);
     }
-  },
-  props: ["createProject"]
+  }
 };
 </script>
 

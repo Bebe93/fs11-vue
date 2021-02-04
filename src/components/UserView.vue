@@ -1,15 +1,13 @@
 <template>
   <div>
-    User View
-    <div v-for="(project, i) in projects" :key="i">
-      Image: {{ project.image }} Title: {{ project.title }} Description:
-      {{ project.description }}
-      <!-- I want to show only one project
-    the first one should appear here
-    and the next should be the result of the click
-    1 I need a method for the click
-    2 I need to compute something so that the first image is here
-    3 I need to show them vaguely nicely -->
+    <div v-if="featured" class="row mb-4">
+      <div class="col">
+        <img :src="featured.image" class="img-fluid rounded" />
+      </div>
+      <div class="col">
+        <h2>{{ featured.title }}</h2>
+        <p>{{ featured.description }}</p>
+      </div>
     </div>
 
     <div class="row">
@@ -18,7 +16,7 @@
         <img
           :src="project.image"
           class="img-fluid rounded shadow"
-          @click="showProject"
+          @click="mainProject(project)"
         />
       </div>
     </div>
@@ -31,26 +29,35 @@ export default {
   props: ["projects"],
   data() {
     return {
-      project: []
+      featured: this.projects[0]
     };
   },
-  computed: {
-    mainProject() {
-      return this.project;
-      // does this make sense?
+  methods: {
+    mainProject(project) {
+      this.featured = project;
     }
   }
-  //   methods: {
-  //     showProject() {
-  // this.project.push(
-  // {
-  //   title: this.title,
-  //   image: this.image,
-  //   description: this.description,
-  // }) ;
-  //     }
-  //   }
 };
+
+/*
+v-if
+v-else
+v-for
+v-model
+: (shorthand for v-bind)
+@ (shorthand for v-on)
+data
+props
+computed
+methods
+
+watch
+filters
+
+mounted
+beforeDestroy
+
+*/
 </script>
 
 <style></style>
